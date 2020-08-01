@@ -13,29 +13,35 @@
 </head>
 <body>
 
-    <!--   NavBar   -->
+      <!--   NavBar   -->
   <nav class="blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo right">Logo</a>
-      <ul class="left hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-
+    
+    <!--<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo right"><img src="logo.png" width="175" height="auto"></a>-->
+      <div class="nav-wrapper container">     
+        <a href="#" class="brand-logo right">
+          <img src="css/logo.png"></a> 
+      
+          <ul class="left hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+          </ul>
+    
       <!--   NavBar Links  -->
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
+          <ul id="nav-mobile" class="sidenav">
+              <li><a href="#">Navbar Link</a></li>
+          </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
   </nav>
+
+      <!--   Grid Paper  -->
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       
-
       <!--   Header/Title   -->
       <h1 class="header center black-text">Chart Master</h1>
-      <div class="row center">
-        <h5 class="header col s12 bold">Create a chart style with your input data</h5>
-      </div>
+        <div class="row center">
+          <h5 class="header col s12 bold">Create a chart style with your input data</h5>
+        </div>
 
       <!--   Buttons   -->
       <div class="row center">
@@ -45,53 +51,42 @@
         <a class="waves-effect waves-light btn waves-light blue"><i class="material-icons right">show_chart</i>Line Chart</a>
         <a class="waves-effect waves-light btn waves-light blue"><i class="material-icons right">pie_chart</i>Pie Chart</a>
       </div>
-      <br><br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
 
         <!--   Graph Section   -->
-  <div class="">
+  <div class="input1">
     <div class="section" id="index-lower">
       <div class="row">
-        <div class="col s4 light blue"><span class="flow-text white-text"><h3>Input Area</h3></span>
-          <form class="input white-text align left">
-            X Axis: <input type = "input" placeholder = "x axis"/>
+        <div class="col s4 light blue"><span class="flow-text white-text"><h4>Bar Chart Input Area</h4></span>
+          <form class="input white-text align left ">
             <br>
-            Y Axis: <input type = "input" placeholder = "y axis">
+            <h6>Dependent Data - X Axis: <input type = "input" placeholder = "ex: January, February"/></h6>
             <br>
-            <br>
-            Variable 1: <input type = "input" placeholder = "placeholder"/>
-            <br>
-            Variable 2: <input type = "input" placeholder = "placeholder">
+            <h6>Independent Data - Y Axis: <input type = "input" placeholder = "ex: your datavariables"></h6>
             <br>
             <br>
-            Variable 3: <input type = "input" placeholder = "placeholder"/>
-            <br>
-            Variable 4: <input type = "input" placeholder = "placeholder">
+            <a class="waves-effect waves-light btn waves-light green"><i class="material-icons left"></i>Generate Chart</a>
             <br>
             <br>
-         </form>
+         
+          </form>
         </div>
 
-
-        <div class="col s8"><span class="flow-text">Graph Area</span></div>
-      </div>
-
-        
-      <!-- 
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">pie_chart</i></h2>
-            <h5 class="center">Pie Chart</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+        <div class="container">
+          <div class="col s8"><span class="flow-text">Graph Output Area</span></div>
+            <div class="grapharea">
+              
+              
+            </div>
           </div>
         </div>
-
-      </div>
-      -->
-    </div>
-    <br><br>
+      </div>  
+    </div>    
   </div>
 
   <footer class="page-footer blue">
@@ -100,9 +95,8 @@
         <div class="col l6 s12">
           <h5 class="white-text">The Chart Master Team</h5>
           <p class="grey-text text-lighten-4">Crysta Jeffcoat | Tanisha Sandiford | Matthew Nelson | Bryan Cook | John Manouse</p>
-
-
         </div>
+
         <div class="col l3 s12">
           <h5 class="white-text">Links</h5>
           <ul>
@@ -112,6 +106,7 @@
             <li><a class="white-text" href="#!">Link 4</a></li>
           </ul>
         </div>
+
         <div class="col l3 s12">
           <h5 class="white-text">Connect</h5>
           <ul>
@@ -123,9 +118,10 @@
         </div>
       </div>
     </div>
+    
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="white-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        Made by <a class="white-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
     </div>
   </footer>

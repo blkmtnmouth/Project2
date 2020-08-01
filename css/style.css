@@ -11,27 +11,30 @@
 	background-size: cover;
 }
 
+.input1{
+	border-style: solid;
+	border-color: black;
+	}
 
 
-/*.input{
-	width:300px;
-	padding:10px;
-	border-color: blue;
-	border: 2px;
+.row{
+	margin-bottom: 0;
+}
+  
+.col.s4.light.blue{
 	
+	border-right-color:black;
+	border-right-style: solid;
+}
+
+  #form{
+	border-style: solid;
+	border-color: black;
   }
 
-.col s5 {
-		width:200px;
-		padding:20px;
-		border: 2px;
-	  }
-
-
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-	font-size: inherit;
-}
-*/
+  #index-lower{
+	  margin: 0;
+	  padding: 0;
+	  margin-bottom: 0;
+  }
+ 
