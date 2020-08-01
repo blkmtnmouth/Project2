@@ -9,4 +9,3 @@ cache:
     - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
-  script: ./run_build.sh
