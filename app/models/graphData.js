@@ -2,16 +2,25 @@
 // =============================================================
 
 // Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 // sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
+const sequelize = require("../config/connection.js");
 
 
 // create model to match up with database
-
+const graph = sequelize.define("graph", {
+  //routeName saved as a string
+  routeName: Sequelize.STRING,
+  //Data Set Label saved as String
+  dataSet: Sequelize.STRING,
+  //X-axis points are technically labels, so string
+  xAxis: Sequelize.STRING,
+  //Y-axis values are numbers (not necessarily whole)
+  yAxis: Sequelize.NUMBER
+})
 
 // Syncs with DB
 Graph.sync();
 
-// Makes the Character Model available for other files (will also create a table)
+// Makes the Chart Model available for other files (will also create a table)
 module.exports = Graph;
