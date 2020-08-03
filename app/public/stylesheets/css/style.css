@@ -27,7 +27,11 @@
 	border-right-style: solid;
 }
 
-  #form{
+.footer-copyright{
+	margin-left: 10px;
+}
+
+#form{
 	border-style: solid;
 	border-color: black;
   }
