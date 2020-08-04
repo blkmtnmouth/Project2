@@ -1,0 +1,24 @@
+{
+  "name": "Project2",
+  "version": "1.0.0",
+  "description": "Project 2 repository",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blkmtnmouth/Project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blkmtnmouth/Project2/issues"
+  },
+  "homepage": "https://github.com/blkmtnmouth/Project2#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
