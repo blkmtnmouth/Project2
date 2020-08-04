@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "Eslint Example",
   "main": "server.js",
-
-  "scripts": {
-    "lint": "eslint \"./**/*.js\""
-  },
-
   "scripts": {
     "start": "node server.js",
     "lint": "eslint **/*.js --quiet",
@@ -20,5 +15,4 @@
   "devDependencies": {
     "eslint": "^7.6.0"
   }
-  
 }
