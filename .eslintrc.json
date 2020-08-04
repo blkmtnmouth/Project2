@@ -1,5 +1,6 @@
 {
     "env": {
+        "excludedFiles": "*.node_modules/ipaddr.js",
         "browser": true,
         "es2020": true
     },
