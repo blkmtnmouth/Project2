@@ -1,5 +1,6 @@
 {
     "env": {
+        "ignorePatterns": ["node_modules/ipaddr.js"],
         "browser": true,
         "es2020": true
     },
