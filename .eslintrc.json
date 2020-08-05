@@ -12,7 +12,7 @@
         
     },
     
-    "ignorePatterns": ["temp.js", "./node_modules"],
+    "ignorePatterns": ["temp.js", "./node_modules", "./app/public/stylesheets"],
     "rules": {
             //...
         }
