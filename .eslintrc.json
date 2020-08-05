@@ -14,8 +14,9 @@
     
     "ignorePatterns": ["temp.js", "./node_modules", "./app/public/stylesheets"],
     "rules": {
-            //...
-        }
+        "semi": "off",
+        "quotes": "off"
+    }
 }
 
 
