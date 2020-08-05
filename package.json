@@ -4,8 +4,8 @@
   "description": "Eslint Example",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint **/*.js --quiet",
+    "start": "node server.js", 
+    "lint": "eslint \"./**/*.js\"",
     "test": "npm run lint"
   },
   "license": "ISC",
