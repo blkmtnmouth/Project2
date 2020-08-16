@@ -1,5 +1,4 @@
 const QuickChart = require('quickchart-js');
-const 
 
 const myChart = new QuickChart();
 myChart
@@ -9,7 +8,7 @@ myChart
     data: { 
       labels: ['Hello world', 'Foo bar'], 
       datasets: [{ 
-        label: 'Foo', 
+        label: 'Foo',
         data: [1, 2] 
       }] 
     },
