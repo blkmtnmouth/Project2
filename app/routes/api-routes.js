@@ -22,5 +22,15 @@ module.exports = function(app) {
           yAxis: graph.yAxis
       });
       res.status(204).end();
-  })  
+  })
+  //Delete all request
+  app.delete("/api/:graph?", function(req, res) {
+    // We just have to specify which todo we want to destroy with "where"
+    db.Graph.destroy({
+      truncate: true
+    }).then(function(dbTodo) {
+      res.json(dbTodo);
+    });
+
+  });  
 }
