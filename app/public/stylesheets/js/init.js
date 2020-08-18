@@ -3,16 +3,23 @@ const graphForm = $("#graphForm");
 const xAxisLabel = $("#xAxisLabel");
 const yAxisLabel = $("#yAxisLabel");
 
-const keys = $(".key")
-const values = $(".value")
+const keys = $("#xAxis")
+const values = $("#yAxis")
 let type = "bar";
 
 $(document).on("ready", init)
 
 function init() {
-  $(".select-type").click(setType)
-  graphForm.on("submit", getGraph)
-}
+  $(".chartBtn").click(setType(), function(event) {
+    console.log(event.currentTarget.id);
+    type = event.currentTarget.id;
+  });
+};
+
+graphForm.on("click", function() {
+  event.preventDefault();
+  console.log(keys[0].value);
+});
 
 function getGraph(e) {
   if (e) {
@@ -20,6 +27,7 @@ function getGraph(e) {
   }
 
   var labels = []
+  console.log(keys);
   keys.each(function () {
     const val = $(this).val()
     labels.push(val)
@@ -43,13 +51,13 @@ function getGraph(e) {
     },
     options: {
       scales: {
-        xAxes: [{
+        xAxis: [{
           scaleLabel: {
             display: true,
             labelString: xAxisLabel.val()
           }
         }],
-        yAxes: [{
+        yAxis: [{
           scaleLabel: {
             display: true,
             labelString: yAxisLabel.val()
@@ -64,8 +72,6 @@ function getGraph(e) {
 }
 
 function setType() {
-  type = $(this).data("type")
-
   getGraph()
 
   $(".select-type").each(function () {
