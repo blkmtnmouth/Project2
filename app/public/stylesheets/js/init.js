@@ -1,24 +1,25 @@
 const graphArea = $("#graphArea");
-const graphForm = $("#graphForm");
+const generateBtn = $("#generateBtn");
 const xAxisLabel = $("#xAxisLabel");
 const yAxisLabel = $("#yAxisLabel");
 
-const keys = $("#xAxis")
-const values = $("#yAxis")
+const keys = $("#xAxis")[0].value
+const values = $("#yAxis")[0].value
 let type = "bar";
 
 $(document).on("ready", init)
 
 function init() {
   $(".chartBtn").click(setType(), function(event) {
-    console.log(event.currentTarget.id);
     type = event.currentTarget.id;
+    // call api from database if exists
   });
 };
 
-graphForm.on("click", function() {
+generateBtn.on("click", function() {
   event.preventDefault();
-  console.log(keys[0].value);
+  // send data to database
+  // call api using data from database
 });
 
 function getGraph(e) {
