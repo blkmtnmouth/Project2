@@ -11,10 +11,6 @@ app.use(express.json());
 // Static directory to be served
 app.use(express.static("app/public"));
 
-
-// Here we introduce HTML routing to serve different HTML files
-require("./app/routes/html-routes.js")(app);
-
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
