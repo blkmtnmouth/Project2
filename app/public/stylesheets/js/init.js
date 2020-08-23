@@ -56,9 +56,10 @@ function getGraph() {
 };
 
 function setType() {
+  type = $(this).data('type')
   getGraph()
 
-  $(".select-type").each(function () {
+  chartBtns.each(function () {
     const _type = $(this).data("type")
     if (_type === type) {
       $(this).addClass('blue')
