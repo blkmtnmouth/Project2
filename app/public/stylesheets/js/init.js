@@ -1,64 +1,59 @@
-const graphArea = $("#graphArea");
-const graphForm = $("#graphForm");
-const xAxisLabel = $("#xAxisLabel");
-const yAxisLabel = $("#yAxisLabel");
-const chartBtns = $(".chartBtn");
-
-
-const xvalEl = $("#xvalues")
-const addxbtn = $("#addxvalue")
-
-addxbtn.click(addXInputEl)
-
-function addXInputEl() {
-  var parent = $("<div>").addClass('xset')
-  var key = $("<input>").addClass('xkey')
-  var value = $("<input>").addClass('xvalue')
-  parent.append(key, value)
-  xvalEl.append(parent)
-}
-
-const keys = $("#xAxis")
-const values = $("#yAxis")
+let xAxisVal;
+let yAxisVal;
+let xAxis;
+let yAxis;
+let myChart;
 let type = "bar";
 
-$(document).on("ready", init)
+// determines chart type
+$(".chartBtn").on("click", function(event) {
+  type = event.currentTarget.id;
+  getChartData();
+  getGraph();
+});
 
-function init() {
-   getGraph()
-};
+// generate chart button
+$("#generateBtn").on("click", function(event) {
+  event.preventDefault();
+  getChartData();
+  getGraph();
+  // send data to database
+});
 
-chartBtns.click(setType)
+function getChartData() {
+  // gets current values from input area
+  xAxisVal = $("#xAxis")[0].value;
+  yAxisVal = $("#yAxis")[0].value;
 
-graphForm.click(getGraph);
-
-function getGraph() {
-  var labels = [], data = []
-
-  $(".xset").each(function(){
-    var label = $(this).find('.xkey').val()
-    var value = $(this).find('.xvalue').val()
-    labels.push(label)
-    data.push(value)
-  })
-
-  const baseQuery = "https://quickchart.io/chart?c="
-  const CHART = {
-    type,                                // Show a bar chart
-    data: {
-      labels,   // Set X-axis labels
-      //labels: [2012, 2013, 2014, 2015, 2016],   // Set X-axis labels
-      datasets: [{
-        label: 'Users',                         // Create the 'Users' dataset
-        data          // Add data to the chart
-        //data: [120, 60, 50, 180, 120]           // Add data to the chart
-      }]
-    }
-  }
-  const chartString = JSON.stringify(CHART)
-
-  graphArea.attr("src", baseQuery + chartString)
+  // creates an array of those values without spaces or commas
+  xAxis = xAxisVal.split(", ");
+  yAxis = yAxisVal.split(", ");
 }
+
+// displays graph using x and y values from user input
+function getGraph() {
+ 
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  const ctx = document.getElementById("my-chart").getContext("2d");
+
+  myChart = new Chart(ctx, {
+    type: type,
+    data: {
+      labels: xAxis,
+      datasets: [
+        {
+          label: "Total Over Time",
+          fill: true,
+          backgroundColor: "#6666ff",
+          data: yAxis
+        }
+      ]
+    }
+  });
+};
 
 function setType() {
   type = $(this).data('type')

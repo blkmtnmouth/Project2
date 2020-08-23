@@ -55,20 +55,36 @@
       <br>
     </div>
   </div>
+    
+        <!--   Graph Section   -->
+  <div class="input1">
+    <div class="section" id="index-lower">
+      <div class="row">
+        <div class="col s4 light blue"><span class="flow-text white-text"><h4>Chart Input Area</h4></span>
+          <form class="input white-text align left">
+            <br>
+            <label for="xAxis">Dependent Data - X Axis:</label>
+            <input id="xAxis" type = "text" placeholder = "ex: January, February"/>
+            <br>
+            <label for="yAxis">Independent Data - Y Axis:</label>
+            <input id="yAxis" type = "text" placeholder = "ex: your datavariables"/>
+            <br>
+            <br>
+            <button id="generateBtn" class="waves-effect waves-light btn waves-light green"><i class="material-icons left"></i>Generate Chart</button>
+            <br>
+            <br>
+            <a class="waves-effect waves-light btn waves-light red"><i class="material-icons left"></i>Reset Chart</a>
+            <br>
+            <br>
+          </form>
+        </div>
 
-  <!--   Graph Section   -->
-  <div class="section container" id="index-lower">
-    <div class="row">
-      <div class="col s4 light blue">
-        <span class="flow-text white-text">
-          <h4>Chart Input Area</h4>
-        </span>
-
-          <div id="xvalues"></div>
-          <button id="addxvalue">Add X</button>
-          <button id="graphForm">Render</button>
-      </div>
-      <div class="col s8"> <img src="#" id="graphArea"></div>
+        <div class="col s8">
+          <div class="grapharea">
+            <canvas id="my-chart"></canvas>
+          </div>
+        </div>
+      </div>  
     </div>
   </div>
 
@@ -98,8 +114,8 @@
   <!--  Scripts-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="app/public/stylesheets/js/materialize.js></script>
-  <script src="app/public/stylesheets/js/init.js"></script>
+  <script src="stylesheets/js/materialize.js"></script>
+  <script src="stylesheets/js/init.js"></script>
 
   </body>
 </html>
