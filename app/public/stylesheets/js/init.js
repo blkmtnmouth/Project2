@@ -1,76 +1,59 @@
-const graphArea = $("#graphArea");
-const generateBtn = $("#generateBtn");
-const xAxisLabel = $("#xAxisLabel");
-const yAxisLabel = $("#yAxisLabel");
-
-const keys = $("#xAxis")[0].value
-const values = $("#yAxis")[0].value
+let xAxisVal;
+let yAxisVal;
+let xAxis;
+let yAxis;
+let myChart;
 let type = "bar";
 
-$(document).on("ready", init)
-
-function init() {
-  $(".chartBtn").click(setType(), function(event) {
-    type = event.currentTarget.id;
-    // call api from database if exists
-  });
-};
-
-generateBtn.on("click", function() {
-  event.preventDefault();
-  // send data to database
-  // call api using data from database
+// determines chart type
+$(".chartBtn").on("click", function(event) {
+  type = event.currentTarget.id;
+  getChartData();
+  getGraph();
 });
 
-function getGraph(e) {
-  if (e) {
-    e.preventDefault()
-  }
+// generate chart button
+$("#generateBtn").on("click", function(event) {
+  event.preventDefault();
+  getChartData();
+  getGraph();
+  // send data to database
+});
 
-  var labels = []
-  console.log(keys);
-  keys.each(function () {
-    const val = $(this).val()
-    labels.push(val)
-  })
+function getChartData() {
+  // gets current values from input area
+  xAxisVal = $("#xAxis")[0].value;
+  yAxisVal = $("#yAxis")[0].value;
 
-  var datavals = []
-  values.each(function () {
-    const val = $(this).val()
-    datavals.push(val)
-  })
-
-  const baseQuery = "https://quickchart.io/chart?c="
-  const data = {
-    type,                                // Show a bar chart
-    data: {
-      labels,   // Set X-axis labels
-      datasets: [{
-        label: 'Users',                         // Create the 'Users' dataset
-        data: datavals         // Add data to the chart
-      }]
-    },
-    options: {
-      scales: {
-        xAxis: [{
-          scaleLabel: {
-            display: true,
-            labelString: xAxisLabel.val()
-          }
-        }],
-        yAxis: [{
-          scaleLabel: {
-            display: true,
-            labelString: yAxisLabel.val()
-          }
-        }]
-      }
-    }
-  }
-  const chartString = JSON.stringify(data)
-
-  graphArea.attr("src", baseQuery + chartString)
+  // creates an array of those values without spaces or commas
+  xAxis = xAxisVal.split(", ");
+  yAxis = yAxisVal.split(", ");
 }
+
+// displays graph using x and y values from user input
+function getGraph() {
+ 
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  const ctx = document.getElementById("my-chart").getContext("2d");
+
+  myChart = new Chart(ctx, {
+    type: type,
+    data: {
+      labels: xAxis,
+      datasets: [
+        {
+          label: "Total Over Time",
+          fill: true,
+          backgroundColor: "#6666ff",
+          data: yAxis
+        }
+      ]
+    }
+  });
+};
 
 function setType() {
   getGraph()
