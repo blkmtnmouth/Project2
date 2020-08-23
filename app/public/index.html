@@ -58,12 +58,14 @@
         <div class="col s4 light blue"><span class="flow-text white-text"><h4>Chart Input Area</h4></span>
           <form class="input white-text align left">
             <br>
-            <h6>Dependent Data - X Axis:<input id="xAxis" type = "input" placeholder = "ex: January, February"/></h6>
-            
-            <h6>Independent Data - Y Axis:<input id="yAxis" type = "input" placeholder = "ex: your datavariables"></h6>
+            <label for="xAxis">Dependent Data - X Axis:</label>
+            <input id="xAxis" type = "text" placeholder = "ex: January, February"/>
+            <br>
+            <label for="yAxis">Independent Data - Y Axis:</label>
+            <input id="yAxis" type = "text" placeholder = "ex: your datavariables"/>
             <br>
             <br>
-            <button id="generateBtn" type= "submit" class="waves-effect waves-light btn waves-light green"><i class="material-icons left"></i>Generate Chart</button>
+            <button id="generateBtn" class="waves-effect waves-light btn waves-light green"><i class="material-icons left"></i>Generate Chart</button>
             <br>
             <br>
             <a class="waves-effect waves-light btn waves-light red"><i class="material-icons left"></i>Reset Chart</a>
@@ -72,12 +74,9 @@
           </form>
         </div>
 
-        <div class="container">
-          <div id="graph-output">
-          <div class="col s8"></div>
-            <div class="grapharea">
-              <canvas id="my-chart"></canvas>
-            </div>
+        <div class="col s8">
+          <div class="grapharea">
+            <canvas id="my-chart"></canvas>
           </div>
         </div>
       </div>  
@@ -110,7 +109,6 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="stylesheets/js/materialize.js"></script>
   <script src="stylesheets/js/init.js"></script>
-  <script src="app/public/js/init.js"></script>
 
   </body>
 </html>
