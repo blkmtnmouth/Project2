@@ -4,6 +4,7 @@ let xAxis;
 let yAxis;
 let myChart;
 let type = "bar";
+let tableName;
 
 // determines chart type
 $(".chartBtn").on("click", function(event) {
@@ -17,14 +18,28 @@ $("#generateBtn").on("click", function(event) {
   event.preventDefault();
   getChartData();
   getGraph();
-  // send data to database
+  graphData = {
+    table: tableName,
+    xAxis: xAxis,
+    yAxis: yAxis
+  }
+
+  $.ajax("/api/graph/", {
+    type: "POST",
+    data: graphData
+  }).then(
+    function() {
+      console.log("it worked!");
+    }
+  );
 });
 
 function getChartData() {
   // gets current values from input area
   xAxisVal = $("#xAxis")[0].value;
   yAxisVal = $("#yAxis")[0].value;
-
+  tableName = $("#tableName").val();
+  console.log(tableName);
   // creates an array of those values without spaces or commas
   xAxis = xAxisVal.split(", ");
   yAxis = yAxisVal.split(", ");
