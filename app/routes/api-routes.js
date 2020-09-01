@@ -4,14 +4,14 @@ const Graph = require("../models/graphData.js");
 //Routes
 //Get request
 module.exports = function(app) {
-  app.get("/api/:graph?"), function(req, res) {
-    db.Post.findAll({})
-      .then(function(dbPost) {
-        res.json(dbPost);
+  app.get("/api/graph"), function(req, res) {
+    Graph.findAll({})
+      .then(function(res) {
+        res.json(res);
       })  
-    }
+    };
 //Post request
-  app.post("api/new", function(req, res) {
+  app.post("api/graph", function(req, res) {
       let graph = req.body;
       let routeName = graph.name.replace(/\s+/g, "").toLowerCase();
 
@@ -24,7 +24,7 @@ module.exports = function(app) {
       res.status(204).end();
   })
   //Delete all request
-  app.delete("/api/:graph?", function(req, res) {
+  app.delete("/api/:graph", function(req, res) {
     // We just have to specify which todo we want to destroy with "where"
     db.Graph.destroy({
       truncate: true
