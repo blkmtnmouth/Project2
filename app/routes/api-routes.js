@@ -28,8 +28,8 @@ module.exports = function(app) {
     // We just have to specify which todo we want to destroy with "where"
     db.Graph.destroy({
       truncate: true
-    }).then(function(dbTodo) {
-      res.json(dbTodo);
+    }).then(function(dbGraph) {
+      res.json(dbGraph);
     });
 
   });  
