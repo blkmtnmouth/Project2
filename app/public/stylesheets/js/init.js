@@ -1,53 +1,49 @@
-let xAxisVal;
-let yAxisVal;
-let xAxis;
-let yAxis;
 let myChart;
 let type = "bar";
-let tableName;
+let graphData;
 
 // determines chart type
-$(".chartBtn").on("click", function(event) {
+$(".chartBtn").on("click", function (event) {
   type = event.currentTarget.id;
-  getChartData();
-  getGraph();
 });
 
 // generate chart button
-$("#generateBtn").on("click", function(event) {
+$("#generateBtn").on("click", async function (event) {
   event.preventDefault();
   getChartData();
   getGraph();
-  graphData = {
-    table: tableName,
-    xAxis: xAxis,
-    yAxis: yAxis
-  }
-
-  $.ajax("/api/graph/", {
-    type: "POST",
-    data: graphData
-  }).then(
-    function() {
-      console.log("it worked!");
-    }
-  );
 });
 
-function getChartData() {
+async function getChartData() {
   // gets current values from input area
   xAxisVal = $("#xAxis")[0].value;
   yAxisVal = $("#yAxis")[0].value;
   tableName = $("#tableName").val();
-  console.log(tableName);
+
   // creates an array of those values without spaces or commas
   xAxis = xAxisVal.split(", ");
   yAxis = yAxisVal.split(", ");
-}
+
+  const bodyData = {
+    name: tableName,
+    xVal: xAxis,
+    yVal: yAxis
+  };
+  console.log(bodyData);
+
+  let data = await fetch("/api/graph/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bodyData)
+  });
+
+  const json = await data.json();
+  console.log(json);
+};
 
 // displays graph using x and y values from user input
 function getGraph() {
- 
+
   if (myChart) {
     myChart.destroy();
   }
