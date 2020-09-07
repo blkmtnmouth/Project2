@@ -4,7 +4,10 @@ module.exports = function(sequelize, DataTypes) {
   const Graph = sequelize.define("Graph", {
     xVal: DataTypes.STRING,
 
-    yVal: DataTypes.STRING,
+    yVal: {
+      type: DataTypes.STRING,
+      defaultValue: 0
+    },
 
     name: DataTypes.STRING
   });
