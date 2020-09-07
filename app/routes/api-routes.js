@@ -1,5 +1,5 @@
 //Dependency
-const db = require("../models");
+const db = require("../models/index");
 const router = require('express').Router();
 
 // Get request to send all data from database
@@ -50,4 +50,5 @@ router.post("/api/graph/", ({ body }, res) => {
     });
 });
 
-module.exports = router
+
+module.exports = router; 
