@@ -1,12 +1,25 @@
 let myChart;
 let type = "bar"; // default type
-let graphData;
+let chartData;
 
 // determines chart type
 $(".chartBtn").on("click", function (event) {
   type = event.currentTarget.id;
   setType(type); 
 });
+
+// changes color of 'type' button when clicked
+function setType(type) {
+
+  $(".chartBtn").each(function () {
+    const _type = this.id; 
+    if (_type === type) {
+      $(this).addClass('blue'); 
+    } else {
+      $(this).removeClass('blue'); 
+    }
+  }); 
+};
 
 // generate chart button
 $("#generateBtn").on("click", async function (event) {
@@ -41,8 +54,6 @@ function resetChart(){
 
 };
 
-
-
 async function getChartData() {
   // gets current values from input area
   xAxisVal = $("#xAxis")[0].value;
@@ -53,56 +64,141 @@ async function getChartData() {
   xAxis = xAxisVal.split(", ");
   yAxis = yAxisVal.split(", ");
 
-  const bodyData = {
+  chartData = {
     name: tableName,
     xVal: xAxis,
     yVal: yAxis
   };
-  console.log(bodyData);
+  console.log(chartData);
 
   let data = await fetch("/api/graph/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(bodyData)
+    body: JSON.stringify(chartData)
   });
 
   const json = await data.json();
   console.log(json);
 };
 
-// displays graph using x and y values from user input
-function getGraph() {
+// creates graph visual
+async function getGraph() {
+  const ctx = document.getElementById("my-chart").getContext("2d");
+  let name = await chartData.name;
+  let xAxis = await chartData.xVal;
+  let yAxis = await chartData.yVal;
 
   if (myChart) {
     myChart.destroy();
+  };
+
+  if (type === 'bar') {
+    myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: xAxis,
+          datasets: [{
+              label: name,
+              data: yAxis,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+    });
   }
-
-  const ctx = document.getElementById("my-chart").getContext("2d");
-
-  myChart = new Chart(ctx, {
-    type: type,
-    data: {
-      labels: xAxis,
-      datasets: [
-        {
-          label: "Total Over Time",
-          fill: true,
-          backgroundColor: "#6666ff",
-          data: yAxis
+  else if (type === 'line') {
+    myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: xAxis,
+        datasets: [
+          {
+            label: name,
+            backgroundColor: "red",
+            borderColor: "red",
+            data: yAxis,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true
+        },
+        scales: {
+          xAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true
+              }
+            }
+          ],
+          yAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true
+              }
+            }
+          ]
         }
-      ]
-    }
-  });
+      }
+    });
+  }
+  else {
+    myChart = new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: xAxis,
+        datasets: [
+          {
+            label: name,
+            backgroundColor: [
+              "#a05195",
+              "#d45087",
+              "#f95d6a",
+              "#ff7c43",
+              "ffa600",
+              "#003f5c",
+              "#2f4b7c",
+              "#665191"
+            ],
+            data: yAxis
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: name
+        }
+      }
+    });
+  }
 };
-
-function setType(type) {
-
-  $(".chartBtn").each(function () {
-    const _type = this.id; 
-    if (_type === type) {
-      $(this).addClass('blue'); 
-    } else {
-      $(this).removeClass('blue'); 
-    }
-  }); 
-}
