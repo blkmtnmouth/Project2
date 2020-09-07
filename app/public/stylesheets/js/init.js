@@ -1,5 +1,5 @@
 let myChart;
-let type = "bar";
+let type = "bar"; // default type
 let graphData;
 
 // determines chart type
