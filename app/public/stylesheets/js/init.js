@@ -5,6 +5,7 @@ let graphData;
 // determines chart type
 $(".chartBtn").on("click", function (event) {
   type = event.currentTarget.id;
+  setType(type); 
 });
 
 // generate chart button
@@ -13,6 +14,34 @@ $("#generateBtn").on("click", async function (event) {
   getChartData();
   getGraph();
 });
+
+// reset chart button
+$("#resetBtn").on("click", async function (event) {
+  event.preventDefault();
+  resetChart(); 
+});
+
+function resetChart(){
+
+    if (myChart) {
+      myChart.destroy();
+    }
+  
+    const ctx = document.getElementById("my-chart").getContext("2d");
+  
+    myChart = new Chart(ctx, {
+      type: type,
+      data: {}
+    });
+
+  // sets values from input area to blank
+  $("#xAxis")[0].value = null;
+  $("#yAxis")[0].value = null;
+  $("#tableName")[0].value = null;
+
+};
+
+
 
 async function getChartData() {
   // gets current values from input area
@@ -66,16 +95,14 @@ function getGraph() {
   });
 };
 
-function setType() {
-  type = $(this).data('type')
-  getGraph()
+function setType(type) {
 
-  chartBtns.each(function () {
-    const _type = $(this).data("type")
+  $(".chartBtn").each(function () {
+    const _type = this.id; 
     if (_type === type) {
-      $(this).addClass('blue')
+      $(this).addClass('blue'); 
     } else {
-      $(this).removeClass('blue')
+      $(this).removeClass('blue'); 
     }
-  })
+  }); 
 }
