@@ -1,3 +1,2 @@
-# Project2
-Project 2 repository  
-https://gentle-mountain-03365.herokuapp.com
+# Chart Master  
+-- https://quiet-dusk-42312.herokuapp.com
