@@ -1,3 +1,4 @@
+
 # Chart Master
 
 #### WEB DEPLOYMENT
@@ -30,3 +31,7 @@ _In progress_
 #### Dev notes
 * generate graph button inserts data into the database everytime it's clicked
 ** Desired outcome: When you click 'generate graph', the data is sent to the database and you are redirected to '/graph/:name', which has gets data from the database with that name in the response. The page will look the same but contains data to be used to generate different types of graphs.
+=======
+# Chart Master  
+-- https://quiet-dusk-42312.herokuapp.com
+
